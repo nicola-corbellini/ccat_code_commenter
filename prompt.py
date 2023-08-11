@@ -28,6 +28,8 @@ def agent_prompt_suffix(cat) -> str:
 
 {declarative_memory}
 
+{tools_output} 
+
 {chat_history}
     Add comments this code.
      Code
@@ -40,6 +42,8 @@ def agent_prompt_suffix(cat) -> str:
 
 {declarative_memory}
 
+{tools_output}
+
 {chat_history}
 
     {input}"""
@@ -51,6 +55,8 @@ def agent_prompt_suffix(cat) -> str:
         {episodic_memory}
 
         {declarative_memory}
+        
+        {tools_output}
 
         ## Conversation until now:{chat_history}
          - Human: {input}
