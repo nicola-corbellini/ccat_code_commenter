@@ -10,14 +10,14 @@ from cat.mad_hatter.decorators import hook
 
 
 @hook(priority=1)
-def agent_prompt_prefix(cat) -> str:
+def agent_prompt_prefix(prefix, cat) -> str:
     prefix = ""
 
     return prefix
 
 
 @hook(priority=1)
-def agent_prompt_suffix(cat) -> str:
+def agent_prompt_suffix(suffix, cat) -> str:
     using_vs_ext = "task" in cat.working_memory
 
     if using_vs_ext:
@@ -64,12 +64,12 @@ def agent_prompt_suffix(cat) -> str:
 
     return suffix
 
+# Temporarily commented out because the new version don't use this anymore
+# @hook(priority=1)
+# def agent_prompt_chat_history(chat_history: List[Dict], cat) -> str:
+#     history = ""
+#     if "task" not in cat.working_memory:
+#         for turn in chat_history:
+#             history += f"\n - {turn['who']}: {turn['message']}"
 
-@hook(priority=1)
-def agent_prompt_chat_history(chat_history: List[Dict], cat) -> str:
-    history = ""
-    if "task" not in cat.working_memory:
-        for turn in chat_history:
-            history += f"\n - {turn['who']}: {turn['message']}"
-
-    return history
+#     return history
